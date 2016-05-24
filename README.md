@@ -11,11 +11,11 @@ Some other documentation is on the SGMK wiki: http://wiki.sgmk-ssam.ch/wiki/8bit
 
 ![Parts_Placement V3.2 ANORG Edition](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/BerlinerSchule_V32_PartsPlacement.png)
 
-# How to program it
-
-Install the following additional board to your Arduino IDE:
 
 # Getting Started to program it
+Install the following additional board to your Arduino IDE:
+
+# How to program it
 
 ## Arduino as ISP
 
