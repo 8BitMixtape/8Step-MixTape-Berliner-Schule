@@ -1,24 +1,47 @@
 /*
-*This code is for an attiny85 powered pocket sequencer and is part of an
+*This code was for an attiny85 powered pocket sequencer and is part of an
 *instructable at http://www.instructables.com/id/Attiny-Pocket-Sequencer/ . 
-*
 *The following code was written by: Adam Berger
-*
 *You are free to use my code in anyway you'd like, as long as
 *you give credit where it is due. Thank you for your interest!
 *
 * Modified by dusjagr and stahl to run on the attiny84 for the 8Step MixTape | Berliner Schule
 * CC 2015
 */
-const byte pot = A3, tonePin = 6, clock = 6, gatePin = 6, controlVoltagePin = 5;
-//const int ledPinMapping[16] = {1, 2, 0, 4, 6, 8, 9, 10, 1, 2, 0, 4, 6, 8, 9, 10};
-const int ledPinMapping[16] = {9, 10, 8, 7, 0, 1, 2, 4};
-const int MAX_NOTE_LENGTH = 32000, MAX_FREQ = 255, NUMBER_OF_STEPS = 8, POT_THRESHOLD = 35;
+
+// ATMEL ATTINY84 / ARDUINO
+//
+// Download the Attiny cores for compatibility to the Arduino IDE from:
+// http://highlowtech.org/?p=1695
+//
+//                       +-\/-+
+//                  Vcc 1|    |14 GND
+//        LED2 (10) PB0 2|    |13 PA0 (0) LED5
+//        LED1 (9)  PB1 3|    |12 PA1 (1) LED6
+//                Reset 4|    |11 PA2 (2) LED7
+//        LED3 (8)  PB2 5|    |10 PA3 (3) A3 left Poti & right Button
+//        LED4 (7)  PA7 6|    |9  PA4 (4) LED1 SCK
+//  empty MOSI (6)  PA6 7|    |8  PA5 (5) MISO PWM-Output -> CV
+//                       +----+
+//
+// https://github.com/8BitMixtape/
+
+const byte pot = A3;
+const byte gatePin = 6; 
+const byte controlVoltagePin = 5;
+const int ledPinMapping[8] = {9, 10, 8, 7, 0, 1, 2, 4}; // change this if you insiston using more than 8 steps
+const int MAX_NOTE_LENGTH = 32000;
+const int MAX_FREQ = 255; 
+const int POT_THRESHOLD = 35;
+const int NUMBER_OF_STEPS = 8;
+
 //int stepFreqs[] = {255,128,230,30,0,240,50,0,200,100,200,0,160,20,130,60};
 int stepFreqs[] = {100,110,120,130,140,150,160,170};
 //int stepFreqs[] = {255,128,230,130,180,240,150,90};
+
+// Step Lenthg is a proportion of the full step between 0-16
+int stepLengths[] = {14,14,14,14,14,14,14,14};
 //int stepLengths[] = {16,16,16,16,16,16,16,16};
-int stepLengths[] = {8,8,8,8,8,8,8,8};
 //int stepLengths[] = {15,3,2,1,15,2,12,0};
 int tempo = 12000;
 int progStep = -1;
@@ -44,12 +67,14 @@ void setup(){
   //pinMode(tonePin, OUTPUT);
   pinMode(gatePin, OUTPUT);
   digitalWrite(gatePin, LOW);
-  
-  analogWrite(controlVoltagePin, 255);
    
   for (int i = 0; i < NUMBER_OF_STEPS; i++){
     pinMode(ledPinMapping[i], OUTPUT);
   };
+  
+  // start-up Sequence
+  // turns CV on, so there will be a peeeeeep!!
+  analogWrite(controlVoltagePin, 255);
   
   for (int i = 0; i <= NUMBER_OF_STEPS; i++){
     digitalWrite(ledPinMapping[i], HIGH);
@@ -61,33 +86,34 @@ void setup(){
   };
   
   analogWrite(controlVoltagePin, 0);
-
+  
+  // End of the start-up Sequence and wait a bit
   delay(400);
-  //setFrequencies();
-  //functionMillis=millis();
-  //setFrequencies();
+  // Set the pre-scalers of timers to fast mode, for non-audible PWM (messes up the delay)
   TCCR1B = (TCCR1B & 0b11111000) | 0b00000001;
   TCCR0B = (TCCR0B & 0b11111000) | 0b00000001;
+  
+  // Go into edit mode of each step
   setFrequencies();
   mode = TEMPO; 
 
 }
 
 void loop(){
-  //for each step
   
-  for(byte a=0; a<NUMBER_OF_STEPS; a++){
+  //Do this for each step
+    for(byte a=0; a<NUMBER_OF_STEPS; a++){
     //turn LED on
-    //digitalWrite(clock, LOW);
     digitalWrite(ledPinMapping[a], HIGH);
+    //output Trigger / Gate signal HIGH
+    digitalWrite(gatePin, HIGH);
     
     //tempo logic/update tempo variable
     previousMillis=millis();
-      
-    //output Trigger / Gate signal HIGH
-    digitalWrite(gatePin, HIGH);
+    
     //output PWM / CV signal
     analogWrite(controlVoltagePin, (stepFreqs[a]));
+    
     //output Trigger / Gate signal LOW
     //digitalWrite(gatePin, LOW);
      
@@ -136,26 +162,32 @@ void loop(){
       longpressMillis=millis();  
       }
       
+      // Check if button has just now been pressed
       if (buttonState != lastButtonState && buttonState == 0) {       
         digitalWrite(ledPinMapping[progStep], LOW);  
         progStep = progStep + 1;
+        
+      // Count the prog Steps and switch to other programming modes
         if (progStep % NUMBER_OF_STEPS == 0) {
           mode = mode + 1; mode = mode % 2; progStep = 0;
         }
       }
         
       lastButtonState = buttonState;
-
+      
+      // Check if step Lentgh time has passed, if so, turn off Gate and put CV to 0
       if(millis()-previousMillis>(stepLengths[a]*(tempo/16))){
         analogWrite(controlVoltagePin, 0);
         digitalWrite(gatePin, LOW);
       }
-    
     }
-  
+    
+    //turn LED off
     digitalWrite(ledPinMapping[a], LOW);
   }
 }
+
+// start programming mode. is only done once!
 
 void setFrequencies(){
   
