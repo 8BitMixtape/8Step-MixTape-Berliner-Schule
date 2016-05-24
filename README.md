@@ -15,6 +15,21 @@ Some other documentation is on the SGMK wiki: http://wiki.sgmk-ssam.ch/wiki/8bit
 
 Install the following additional board to your Arduino IDE:
 
+# Getting Started to program it
+
+## Arduino as ISP
+
+## Set the fuses / bootloader
+
+## Hello World
+
+## Test code for all functions
+
+## One-liners
+
+## 8 Step-Sequencer
+
+## Iyok's Crazy 8BeatBox
 
 # Older Versions
 
