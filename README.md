@@ -1,3 +1,5 @@
+![8Bit MixTapeBanner](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/8BitMixtape_banner_ade.jpg)
+
 # 8Step-MixTape-Berliner-Schule
 modified 8step sequencer to run on attiny84, with LED driving and eeprom save
 
@@ -22,4 +24,6 @@ Install the following additional board to your Arduino IDE:
 
 ![Berliner-Schule](https://github.com/8BitMixtape/8Step-MixTape-Berliner-Schule/blob/master/images/Board-Berliner-Schule.png?raw=true)
 
-## Version 2.0
+## Version 2.xx
+
+![Berliner-Schule3](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/BerlinerSchule_anyma.jpg)
