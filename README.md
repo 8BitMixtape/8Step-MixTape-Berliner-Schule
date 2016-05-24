@@ -24,6 +24,10 @@ Install the following additional board to your Arduino IDE:
 
 ![Berliner-Schule](https://github.com/8BitMixtape/8Step-MixTape-Berliner-Schule/blob/master/images/Board-Berliner-Schule.png?raw=true)
 
+## Version 1.8 MonoShop Edition
+
+![Berliner-Schule_Monoshop](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/BerlinerSchule_in_pink_n.jpg)
+
 ## Version 2.xx
 
 ![Berliner-Schule3](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/BerlinerSchule_anyma.jpg)
