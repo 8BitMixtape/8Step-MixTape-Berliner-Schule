@@ -6,7 +6,9 @@
 
 // ATMEL ATTINY84 / ARDUINO
 //
-// Download the Attiny cores for compatibility to the Arduino IDE from:
+// Download the 8Bit MixTape (Attiny) cores for compatibility to the Arduino IDE from:
+// https://github.com/8BitMixtape/8Step-MixTape-Berliner-Schule
+// or the general Attiny cores:
 // http://highlowtech.org/?p=1695
 //
 //                       +-\/-+
