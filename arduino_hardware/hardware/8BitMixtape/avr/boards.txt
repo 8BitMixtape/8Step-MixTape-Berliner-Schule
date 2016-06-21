@@ -1,0 +1,38 @@
+menu.cpu=Processor
+menu.clock=Clock
+
+attiny.name=8Bit MixtTape
+attiny.bootloader.tool=arduino:avrdude
+attiny.bootloader.unlock_bits=0xff
+attiny.bootloader.lock_bits=0xff
+attiny.build.core=arduino:arduino
+attiny.build.board=attiny
+attiny.upload.tool=arduino:avrdude
+
+attiny.menu.cpu.attiny84=Berliner Schule - ATtiny84
+attiny.menu.cpu.attiny84.upload.maximum_size=8192
+attiny.menu.cpu.attiny84.build.mcu=attiny84
+attiny.menu.cpu.attiny84.build.variant=tiny14
+
+attiny.menu.cpu.attiny85=MixTape Yogyakarta - ATtiny85
+attiny.menu.cpu.attiny85.upload.maximum_size=8192
+attiny.menu.cpu.attiny85.build.mcu=attiny85
+attiny.menu.cpu.attiny85.build.variant=tiny8
+
+attiny.menu.clock.internal1=1 MHz (internal)
+attiny.menu.clock.internal1.bootloader.low_fuses=0x62
+attiny.menu.clock.internal1.bootloader.high_fuses=0xdf
+attiny.menu.clock.internal1.bootloader.extended_fuses=0xff
+attiny.menu.clock.internal1.build.f_cpu=1000000L
+
+attiny.menu.clock.internal8=8 MHz (internal)
+attiny.menu.clock.internal8.bootloader.low_fuses=0xe2
+attiny.menu.clock.internal8.bootloader.high_fuses=0xdf
+attiny.menu.clock.internal8.bootloader.extended_fuses=0xff
+attiny.menu.clock.internal8.build.f_cpu=8000000L
+
+attiny.menu.clock.internal16=16 MHz (internal PLL)
+attiny.menu.clock.internal16.bootloader.low_fuses=0xc1
+attiny.menu.clock.internal16.bootloader.high_fuses=0xd4
+attiny.menu.clock.internal16.bootloader.extended_fuses=0xff
+attiny.menu.clock.internal16.build.f_cpu=16000000L
