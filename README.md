@@ -14,22 +14,37 @@ Some other documentation is on the SGMK wiki: http://wiki.sgmk-ssam.ch/wiki/8bit
 
 # Getting Started to program it
 Install the following additional board to your Arduino IDE:
+8Bit Mixtape
 
 # How to program it
 
 ## Arduino as ISP
 
+
+
 ## Set the fuses / bootloader
+
+
 
 ## Hello World
 
+
+
 ## Test code for all functions
+
+
 
 ## One-liners
 
+
+
 ## 8 Step-Sequencer
 
+
+
 ## Iyok's Crazy 8BeatBox
+
+Install the following library: https://github.com/TeenyRiotAddons/TeenySynth
 
 # Older Versions
 
