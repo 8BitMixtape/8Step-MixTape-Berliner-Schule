@@ -1,1 +1,12 @@
 Iyok?
+
+Description on the synth lib will follow.
+// DZL 2014
+// HTTP://dzlsevilgeniuslair.blogspot.dk
+// HTTP://illutron.dk
+// Modified by manticore to support attiny85/84
+
+needs the TeenySynth library. Download it here:
+https://github.com/TeenyRiotAddons/TeenySynth
+
+install it by copying it into your Arduino/libraries folder or using the library manager.
