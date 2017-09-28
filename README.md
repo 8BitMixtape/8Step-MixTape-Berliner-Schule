@@ -1,7 +1,7 @@
 ![8Bit MixTapeBanner](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/8BitMixtape_banner_ade.jpg)
 
 # 8Step-MixTape-Berliner-Schule
-modified 8step sequencer to run on attiny84, with LED driving and eeprom save
+8step sequencer modified to run on ATtiny84, with LED driving and eeprom save
 
 ![Berliner-Schule_V30](https://raw.githubusercontent.com/8BitMixtape/8Step-MixTape-Berliner-Schule/master/images/800px-8-step_Mixtape.jpg)
 
@@ -13,8 +13,14 @@ Some other documentation is on the SGMK wiki: http://wiki.sgmk-ssam.ch/wiki/8bit
 
 
 # Getting Started to program it
-Install the following additional board to your Arduino IDE:
-8Bit Mixtape
+Add the following board to your Arduino IDE: 8Bit MixTape
+
+## How to add the board
+1. Clone or download the repository: https://github.com/8BitMixtape/8Step-MixTape-Berliner-Schule
+2. Copy the contents of arduino_hardware/hardware to your 'hardware' directory (create the directory if it doesn't exist in your Arduino Sketchbook directory)
+3. Restart Arduino IDE
+
+You can now select the board in the Tools menu.
 
 # How to program it
 
