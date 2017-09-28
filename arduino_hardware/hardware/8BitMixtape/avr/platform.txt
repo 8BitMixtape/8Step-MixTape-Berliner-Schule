@@ -1,4 +1,4 @@
-name=8Bit MixtTape
+name=8Bit MixTape
 
 tools.avrdude.erase.params.verbose=-v -v -v -v
 tools.avrdude.erase.params.quiet=-q -q
